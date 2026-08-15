@@ -9,10 +9,10 @@ import sitemap from "@astrojs/sitemap";
 
 import vercel from "@astrojs/vercel/serverless";
 
-// https://astro.build/config
+
 export default defineConfig({
-  integrations: [tailwind(), icon(), sitemap()],
-  site: "https://simple-image-compress.vercel.app/",
-  output: "server",
-  adapter: vercel(),
+  output: 'server', // 或 'hybrid'
+  adapter: vercel({
+    runtime: 'nodejs20.x', // 显式指定最新的运行环境，避免默认退回 nodejs18
+  }),
 });
